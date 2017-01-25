@@ -1,0 +1,10 @@
+.DS_Store
+local/
+*.log
+*.gz
+*.aux
+*.out
+salary.R
+twitter_setting.R
+.Rproj.user
+*.Rproj.user*
