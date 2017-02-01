@@ -1,0 +1,33 @@
+---
+title: "Homework 1"
+author: "Biostats597E"
+date: "Due Feb 10th, 2016"
+output: pdf_document
+---
+
+***
+Download the homework 1 database **Homework1/homework1.sqlite** from course website.
+
+***
+
+You can print and turn in the homework when you come to class. It should contain all codes and partial output.
+
+### Problem 1 
+
+Using the **countries** data: write a sql statement that finds the names of countries with population at least 2% of the total population.
+
+### Problem 2 - duplicated emails
+Using the **emails** data: write a sql statement that finds emails that have duplications in the data.
+
+For this data, it should return
+
+ella@example.com        
+emily@example.com   
+tom@example.com        
+
+### Problem 3 - who earns more than manger
+The **salaries** table contains all employees including their managers. Every employee has an id and there is also a column for the manager id. For example, Joe's manager is id = 3 or Sam.
+
+Write a sql statement to find employee names whose salarier are greater than their corresponding managers' salaries.
+
+**Hint**: use self-join
