@@ -1,0 +1,102 @@
+---
+title: "Biostats 597E"
+subtitle: Week 5 - Introduction to SQL
+output: ioslides_presentation
+---
+
+## SAS Programmer In Pharmaceutical Industry
+
+What is a SAS programmer's daily work in pharmaceutical industry?
+**Tables, Listings, Figures** (Mostly tables)
+
+<img src="fig/sasprog.jpg" width="250px"></img>
+
+## Example Deliverable Table
+
+<image src="fig/demotable.png" width="500px"></img>
+
+## How the Table is Generated
+
+- Gather data from different sources necessary to produce the table
+- Data transformation and joining into a table ready to produce the report (SQL is very useful in this step)
+- Create the report in a format as specified using **PROC REPORT**
+
+## Example 1: Prep Data For Demo Table
+
+<image src="fig/demotable.png" width="500px"></img>
+
+## Create Overall Group
+
+We can duplicate the original data and assign treatment group to "Overall" so we obtain overall statistics when we do **group by**.
+
+```
+create table demo1 as
+    select * from demo
+    UNION ALL
+    select subjid, 'Overall' as trt, gender, race, age from demo;
+```
+
+## Summary by Age
+
+```
+select trt,  'age' as variable, 'N' as category, 
+  count(age) as value from demo1 group by trt
+UNION ALL
+select trt,  'age' as variable, 'Mean' as category, 
+  round(avg(age), 1) as value from demo1 group by trt
+UNION ALL
+select trt,  'age' as variable, 'Minimum' as category, 
+  min(age) as value from demo1 group by trt
+UNION ALL
+select trt,  'age' as variable, 'Maximum' as category, 
+  max(age) as value from demo1 group by trt
+```
+
+## Summary by Gender
+
+```
+select trt,  'gender' as variable, gender as category, count(*) as value
+  from demo1
+group by trt, variable, category
+having category is not null
+```
+
+## Summary by Race
+
+```
+select trt, 'race' as variable, race as category, count(*) as value
+  from demo1
+group by trt, variable, category
+```
+
+## Combine Them
+We combine the queries into one and create a temp table
+```
+Create table demo_sum as
+...
+```
+
+## Transpose Table
+SAS **PROC TRANSPOSE** might be a better way, but we can still do in SQL.
+
+```
+select t1.*, Placebo, Overall from
+  (select variable, category, value as Active
+    from demo_sum where trt = 'ACTIVE') t1 inner join
+  (select variable, category, value as Placebo 
+    from demo_sum where trt = 'PLACEBO') t2 
+    on t1.variable = t2.variable and t1.category = t2.category inner join
+  (select variable, category, value as Overall 
+    from demo_sum where trt = 'Overall') t3 
+  on t1.variable = t3.variable and t1.category = t3.category
+```
+
+The result table should be ready to produce well formated report
+
+## Excersise
+In **temp** table, find days with rising temperature (temperature higher than its previous day)
+
+## Excersise
+In **salary** table, for each department find highest 3 salaried employees
+
+
