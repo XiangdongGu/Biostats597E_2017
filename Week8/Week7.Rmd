@@ -1,0 +1,17 @@
+---
+title: "Biostats 597E"
+subtitle: Week 8 - Introduction to Sparklyr
+output: ioslides_presentation
+---
+
+## Sparklyr
+
+http://spark.rstudio.com/index.html for a quick walk through
+
+## Example
+
+see sparklyr.R for an example analysis
+
+Data can be downloaded at 
+
+https://www.kaggle.com/census/2013-american-community-survey
