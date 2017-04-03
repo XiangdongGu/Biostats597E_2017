@@ -49,11 +49,6 @@ ec2-54-234-8-132.compute-1.amazonaws.com:8787
 
 Within Rstudio, we can install packages for sparklyr and etc
 
-Next, we can connect to Spark and hadoop cluster in Rstudio
-
-```
-
-```
 
 ### Download data set for testing
 
@@ -154,3 +149,5 @@ ml1 <- model_partition$train %>%
 # Summarize the linear model
 summary(ml1)
 ```
+
+## Remember to Terminate Your Cluster!!!
