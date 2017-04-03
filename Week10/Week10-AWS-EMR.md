@@ -114,6 +114,7 @@ sc <- spark_connect("yarn-client", config = spark_config(), version = '1.6.3')
 ```
 
 ### Data Analysis
+```
 airports_tbl <- spark_read_csv(sc, "airports", "/user/rstudio-user/airports.csv")
 
 airlines_tbl <- spark_read_csv(sc, "airlines", "/user/rstudio-user/airlines.csv")
