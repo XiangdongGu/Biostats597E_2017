@@ -1,0 +1,8 @@
+default:
+  sparklyr.shell.executor-memory: 4G
+  sparklyr.shell.driver-memory: 4G
+  sparklyr.shell.num-executors: 2
+  sparklyr.shell.executor-cores: 6
+  spark.executor.memory: 4G
+  spark.yarn.am.memory: 4G
+  spark.executor.instances: 3
