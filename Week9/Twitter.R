@@ -1,10 +1,10 @@
 # install.packages("twitteR")
 # Set up twitter authentication------------------------------------------------
 library(twitteR)
-consumer_key <- "rjKHf9NHAyzhypHdk2s191Ghd"
-consumer_secret <- "Sca1JaEXZHp8iClTjZ0uc8384o0ktLZiZT6tkLSjbm1B7hpBvg"
-access_token <- "960801247-cDDWtm5GunTL62KqqXA4QYJL4zj8W5BhnWpAf8Gf"
-access_secret <- "CNDj63Ux9DVUUlWntoTRA1wspVd3sBnYLtWOiAq0LXcRG"
+consumer_key <- "*****************"
+consumer_secret <- "*****************"
+access_token <- "*****************"
+access_secret <- "*****************"
 
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 
