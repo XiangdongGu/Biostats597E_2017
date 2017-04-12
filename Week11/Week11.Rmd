@@ -1,0 +1,82 @@
+---
+title: "Biostats 597E"
+subtitle: Week 10 - Introduction to Shiny
+output: ioslides_presentation
+---
+
+## What Is Shiny - Examples
+
+http://shiny.rstudio.com/gallery/
+
+## A Shiny Template
+
+- Insall 'shiny' package if not
+- Open RStudio
+- File >> New Project >> New Directory >> Shiny Web Application
+- Specify Shiny App name and directory
+- Click 'Run App' button or run code ```runApp()`` to run the app
+
+## Structure of a Shiny App
+
+- Each app is a foder
+- An R file for user-interfact: ui.R
+- An R file for server script: server.R
+- optionaly a global R file, global.R, with shared components between ui.R and server.R
+
+## Layout User Interface
+
+- Page Layout:
+    * We can use pre-defined layout, for example sidebaylayout
+    * We can also build the page from scratch
+- Page Componet:
+    * HTML element: p(paragraph), h2(heading), a(link), img(image)
+    * Input control widgets: select input, slider input, numeric input etc
+    * Output element: output returned from server.R
+- Element Positioning:
+    * We can use boostrap's grid system to layout components: fluidRow and column
+
+## Control Widget
+There are many control widgets, example
+
+- **selectInput**: 	A box with choices to select from
+- **textInput**: A field to enter text
+- **numericInput**:	A field to enter numbers
+
+<img src="http://shiny.rstudio.com/tutorial/lesson3/images/basic-widgets.png" width="675"></img>
+
+## Widget Example
+
+```
+selectInput("select", label = h3("Select box"), 
+  choices = list("Choice 1" = 1, "Choice 2" = 2,
+               "Choice 3" = 3), selected = 1))
+```
+"select" is the widgt id used by server to identify which widget's value to access
+
+```
+textInput("text", label = h3("Text input"), 
+        value = "Enter text...")) 
+```
+
+## Reactive to Input Values
+server.R can render output in format of text, image, table etc in the page. It can also react to input values change to update the output.
+
+- In server.R, render\* functions in server.R takes input widgets' values and output to ui
+- In ui.R, display the output element using \*output functions
+
+## Bootstrap Grid System
+
+- We can recursively split the page using rows and columns
+- Each component can be split by 12 using column
+
+```
+fluidRow(column(6, h1("Hello1")),
+         column(6, h1("Hello2"))),
+fluidRow(column(3, h1("Hello3")),
+         column(5, h1("Hello4")))
+```
+
+The page is split by 2 rows. each row contains one column with width 6 (half page width). Second row contains columns with 3/12 and 5/12 of the width of page
+
+## Example App
+
