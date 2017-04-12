@@ -1,6 +1,6 @@
 ---
 title: "Biostats 597E"
-subtitle: Week 10 - Introduction to Shiny
+subtitle: Week 11 - Introduction to Shiny
 output: ioslides_presentation
 ---
 
