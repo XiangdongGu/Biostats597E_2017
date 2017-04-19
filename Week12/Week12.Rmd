@@ -1,0 +1,83 @@
+---
+title: "Biostats 597E"
+subtitle: Week 12 - Introduction to Shiny
+output: ioslides_presentation
+---
+
+## A Shiny Example
+
+We will build a smiple Shiny App ploting stock prices
+
+- User can choose stock by stock ticket
+- User can choose date range of the stock's time series
+- User can choose chart type from: auto, candlesticks, matchsticks, bars, lines
+
+see stockplot example
+
+## Deploy Shiny App
+Shiny app can be deployed to free server **shinyapps.io**
+
+- Instal package: install.packages('rsconnect')
+- Open shiny app and make sure it runs
+- Go to www.shinyapps.io to register/login
+- Go to Tokens >> Show >> Show Secret >> Copy the code
+- Run the copied code in Rstudio
+- Deploy
+```
+rsconnect::deployApp()
+```
+- We can view the shiny app at \<account\>.shinyapps.io/\<app\>
+
+## Deploy Shiny App to Cloud
+
+We can build our own Shiny server in cloud such as AWS or Digital Ocean. 
+
+Digital Ocean is cheap with only $5 a month to get a fully functional remote server.
+
+- Register an account in Digital ocean.
+- Log in >> Create Droplet
+- Click Tab One-click Apps >> Choose image **Docker 1.10.3 on 14.04**
+- In Choose a Size, choose the cheapest one ($5 a month)
+- Choose a data center, such as New York
+- Add SSH Key of your machine for remote access
+- Create
+
+## Deploy Shiny App to Cloud
+
+- Click the server name to manager the machine
+- Check for ip address and access to the machine using terminal
+```
+ssh root@your.ip.address
+```
+- Download Docker Image for shiny:
+```
+docker pull ustcgxd/shiny
+```
+
+- We can use git to download some shiny apps
+```
+git clone https://github.com/XiangdongGu/Biostats597E.git
+```
+
+## Deploy Shiny App to Cloud
+
+- We can put all Shiny app folders into same folder, then Shiny server can run all of them
+- Here we use folder Biostats597E/Week11/apps as Shiny server folder
+
+```
+docker run --name shiny -p 3838:3838 -v \
+/root/Biostats597E/Week11/apps:/srv/shiny-server -d ustcgxd/shiny
+```
+
+- We can access the server at: ip.address:3838
+
+- Stop the server: docker stop shiny
+
+- Restart the server: docker start shiny
+
+## Deploy Shiny App to Cloud
+
+Make sure to delete the server if it is no longer needed. Otherwise it will charge $5 a month.
+
+
+

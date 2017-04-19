@@ -10,8 +10,8 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       textInput("search", "Input search string"),
-       numericInput("numtweets", "Number of tweets", 100, 1, 1000),
+       fluidRow(column(6, textInput("search", "Input search string")),
+                column(6, numericInput("numtweets", "Number of tweets", 100, 1, 1000))),
        submitButton("Submit")
     ),
     
