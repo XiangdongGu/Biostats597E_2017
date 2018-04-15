@@ -7,7 +7,7 @@ library(rvest)
 #------------------------------------------------------------------------------
 
 # Frist go to indeed.com to create publisher account and obtain publisher id
-publisher_id <- "4892433118027808"
+publisher_id <- "Add Your Key Here"
 
 # Generate a query
 res <- GET("http://api.indeed.com/ads/apisearch",
